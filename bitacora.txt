@@ -1,0 +1,3 @@
+[2025-10-03 19:34:29]  DPI: 3010-45933-0101 | Operacion: INSERT | Realizado en la Base de datos: MySQL
+[2025-10-03 19:35:29]  DPI: 3010-45933-0101 | Operacion: INSERT | Realizado en la Base de datos: MySQL
+[2025-10-03 19:38:14]  DPI: 3010-45933-0101 | Operacion: UPDATE | Realizado en la Base de datos: MySQL

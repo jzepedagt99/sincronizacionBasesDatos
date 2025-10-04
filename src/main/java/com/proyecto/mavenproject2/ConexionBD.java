@@ -15,7 +15,7 @@ public class ConexionBD {
     public static Connection getConnectionMysql() {
         
         Connection conMysql = null;
-        String URL = "jdbc:mysql://localhost:3306/prestamo";
+        String URL = "jdbc:mysql://localhost:3306/sincronizacion_mysql";
         String USER = "root";
         String PASSWORD = "root";
 
@@ -33,9 +33,9 @@ public class ConexionBD {
     
     // Conexión PostgreSQL
     public static Connection getPostgresConnection() {
-        String url = "jdbc:postgresql://localhost:5432/mi_postgres";
+        String url = "jdbc:postgresql://localhost:5432/mi_personal";
         String user = "postgres";
-        String password = "12345";
+        String password = "root";
 
         try {
             Class.forName("org.postgresql.Driver");

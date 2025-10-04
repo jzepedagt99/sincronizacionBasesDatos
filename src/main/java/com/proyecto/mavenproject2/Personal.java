@@ -1,6 +1,6 @@
 package com.proyecto.mavenproject2;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *

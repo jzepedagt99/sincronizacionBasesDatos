@@ -1,7 +1,6 @@
 package com.proyecto.mavenproject2;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 /**
@@ -73,7 +72,7 @@ public class MiVentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(196, 196, 196)
                         .addComponent(jLabel1)))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,24 +102,40 @@ public class MiVentanaPrincipal extends javax.swing.JFrame {
             if (conexionMysql != null) {
                 JOptionPane.showMessageDialog(this, "Conexión realizada a MySQL con exito");
             }else{
-                JOptionPane.showMessageDialog(this, "No hay conexión con la base de datos MySQL", "ADVERTENCIA", ERROR);
+                JOptionPane.showMessageDialog(this, "No hay conexión con la base de datos MySQL", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
         }                    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(conexionPostgre == null){
-            conexionPostgre = ConexionBD.getConnectionMysql();
+            conexionPostgre = ConexionBD.getPostgresConnection();
             if (conexionPostgre != null) {
                 JOptionPane.showMessageDialog(this, "Conexión realizada a Postgree con exito");
             }else{
-                JOptionPane.showMessageDialog(this, "No hay conexión con la base de datos Postgre", "ADVERTENCIA", ERROR);
+                JOptionPane.showMessageDialog(this, "No hay conexión con la base de datos Postgre", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
+        if (conexionMysql == null) {
+            JOptionPane.showMessageDialog(this, "No hay conexión con la base de datos MySQL por favor seleccione el bóton correspondiente", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (conexionPostgre == null) {
+            JOptionPane.showMessageDialog(this, "No hay conexión con la base de datos Postgre por favor seleccione el bóton correspondiente", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        SincronizarSvc svc = new SincronizarSvc();
+        svc.sincronizarBaseDatos(conexionMysql, conexionPostgre);
+        
+        
+        JOptionPane.showMessageDialog(this, "Sincronización realizada con exito");
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
